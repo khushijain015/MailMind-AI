@@ -26,7 +26,7 @@ if st.session_state.token is None:
     token = oauth2.authorize_button(
         name="Continue with Google",
         icon="https://www.google.com/favicon.ico",
-        redirect_uri="https://mailmind-ai-015.streamlit.app/oauth2callback",
+        redirect_uri=st.secrets["auth"]["redirect_uri"],
         scope="openid email profile https://www.googleapis.com/auth/gmail.readonly",
         key="google",
     )
