@@ -21,11 +21,12 @@ st.subheader("Executive Email Intelligence Platform")
 if st.session_state["token"] is None:
 
     result = oauth2.authorize_button(
-        name="Continue with Google",
-        icon="https://www.google.com/favicon.ico",
-        redirect_uri=st.secrets["auth"]["redirect_uri"],
-        scope="openid email profile https://www.googleapis.com/auth/gmail.readonly",
-        key="google",
+    name="Continue with Google",
+    icon="https://www.google.com/favicon.ico",
+    redirect_uri=st.secrets["auth"]["redirect_uri"],
+    scope="openid email profile https://www.googleapis.com/auth/gmail.readonly",
+    key="google",
+    extras_params={"access_type": "offline", "prompt": "consent"},
     )
 
     if result and "token" in result:
