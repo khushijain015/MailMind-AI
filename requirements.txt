@@ -1,5 +1,5 @@
-streamlit==1.56.0
-authlib==1.6.0
+streamlit>=1.56.0
+streamlit-oauth
 google-api-python-client
 google-auth
-pandas
+google-auth-oauthlib
