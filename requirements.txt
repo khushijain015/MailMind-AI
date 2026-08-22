@@ -1,5 +1,1 @@
 streamlit>=1.56.0
-streamlit-oauth
-google-api-python-client
-google-auth
-google-auth-oauthlib
