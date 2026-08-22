@@ -1,7 +1,5 @@
 import streamlit as st
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-
+from streamlit_oauth import OAuth2Component
 st.set_page_config(page_title="MailMind AI", page_icon="📧")
 
 # Login screen
@@ -19,7 +17,6 @@ st.success(f"Welcome, {st.user.name}!")
 st.write(st.user.email)
 
 # Gmail API
-creds = Credentials(token=st.user.id_token)
 service = build("gmail", "v1", credentials=creds)
 
 results = service.users().messages().list(userId="me", maxResults=10).execute()
