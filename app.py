@@ -1,39 +1,19 @@
 import streamlit as st
-from streamlit_oauth import OAuth2Component
 
 st.set_page_config(page_title="MailMind AI", page_icon="📧")
 
-oauth2 = OAuth2Component(
-    client_id=st.secrets["auth_google"]["client_id"],
-    client_secret=st.secrets["auth_google"]["client_secret"],
-    authorize_endpoint="https://accounts.google.com/o/oauth2/v2/auth",
-    token_endpoint="https://oauth2.googleapis.com/token",
-    refresh_token_endpoint="https://oauth2.googleapis.com/token",
-    revoke_token_endpoint="https://oauth2.googleapis.com/revoke",
-)
+if not st.user.is_logged_in:
+    st.title("📧 MailMind AI")
+    st.subheader("Executive Email Intelligence Platform")
 
-if "token" not in st.session_state:
-    st.session_state["token"] = None
+    if st.button("Continue with Google"):
+        st.login("google")
+
+    st.stop()
 
 st.title("📧 MailMind AI")
+st.success(f"Welcome, {st.user.name}!")
+st.write(f"**Email:** {st.user.email}")
 
-if st.session_state["token"] is None:
-
-    result = oauth2.authorize_button(
-        name="Continue with Google",
-        redirect_uri=st.secrets["auth"]["redirect_uri"],
-        scope="openid email profile https://www.googleapis.com/auth/gmail.readonly",
-        key="google",
-    )
-
-    if result is not None:
-        st.session_state["token"] = result["token"]
-        st.rerun()
-
-else:
-    st.success("Login successful!")
-    st.json(st.session_state["token"])
-
-    if st.button("Logout"):
-        st.session_state["token"] = None
-        st.rerun()
+if st.button("Logout"):
+    st.logout()
