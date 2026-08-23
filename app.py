@@ -1,7 +1,5 @@
 import streamlit as st
 from streamlit_oauth import OAuth2Component
-st.write(st.secrets)
-st.stop()
 
 st.set_page_config(page_title="MailMind AI", page_icon="📧")
 
@@ -18,7 +16,6 @@ if "token" not in st.session_state:
     st.session_state.token = None
 
 st.title("📧 MailMind AI")
-st.subheader("Executive Email Intelligence Platform")
 
 if st.session_state.token is None:
 
@@ -35,8 +32,7 @@ if st.session_state.token is None:
 
     st.stop()
 
-st.success("✅ Gmail connected successfully!")
-st.write("Access token received.")
+st.success("✅ Gmail connected!")
 st.json(st.session_state.token)
 
 if st.button("Logout"):
