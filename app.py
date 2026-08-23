@@ -13,8 +13,7 @@ if not st.user.is_logged_in:
 
 st.title("📧 MailMind AI")
 st.success(f"Welcome, {st.user.name}!")
-
-st.write("**Email:**", st.user.email)
+st.write("Email:", st.user.email)
 
 if st.button("Logout"):
     st.logout()
