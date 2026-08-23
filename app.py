@@ -4,6 +4,8 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
 st.set_page_config(page_title="MailMind AI", page_icon="📧")
+st.write("Loaded secrets:", list(st.secrets.keys()))
+st.stop()
 
 oauth2 = OAuth2Component(
     client_id=st.secrets["auth_google"]["client_id"],
