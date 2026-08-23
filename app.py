@@ -1,7 +1,7 @@
-st.write(st.secrets)
-st.stop()
 import streamlit as st
 from streamlit_oauth import OAuth2Component
+st.write(st.secrets)
+st.stop()
 
 st.set_page_config(page_title="MailMind AI", page_icon="📧")
 
